@@ -1,0 +1,116 @@
+
+
+.resize-box{
+    position: absolute;
+    padding: 2px;
+    -ms-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+    touch-action: none;
+}
+
+.resize-box:hover{
+    border: 1px solid var(--leis-baseColor);
+}
+.resize-box:focus .resize-handle,
+.resize-box.selected .resize-handle,
+.resize-box.selected .resize-corner,
+.resize-box:focus .resize-corner{
+   visibility: visible;
+   z-index: 1000;
+}
+.resize-handle {
+    visibility: hidden;
+    position: absolute;
+    -ms-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+    touch-action: none;
+    
+    
+}
+
+/* Top handle */
+.resize-handle.top {
+    height: 5px;
+    width: 100%;
+    top: -5px;
+    left: 0;
+    cursor: n-resize;
+    margin-bottom: 5px;
+    border-top: 2px solid  var(--leis-baseColor);
+}
+
+/* Left handle */
+.resize-handle.left {
+    width: 10px;
+    height: 100%;
+    left: -5px;
+    top: 0;
+    cursor: w-resize;
+    border-left: 2px solid  var(--leis-baseColor);
+}
+
+/* Right handle */
+.resize-handle.right {
+    width: 10px;
+    height: 100%;
+    right: -5px;
+    top: 0;
+    cursor: e-resize;
+    border-right: 2px solid  var(--leis-baseColor);
+}
+
+/* Bottom handle */
+.resize-handle.bottom {
+    height: 10px;
+    width: 100%;
+    bottom: -5px;
+    left: 0;
+    cursor: s-resize;
+    border-bottom: 2px solid  var(--leis-baseColor);
+}
+
+
+/* Style each corner handle */
+.resize-corner {
+    visibility: hidden;
+    position: absolute;
+    background-color: transparent;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: var(--leis-baseColor);;
+    -webkit-user-select: none;
+    user-select: none;
+    touch-action: none;
+
+}
+
+/* Top-left corner */
+.resize-corner.top-left {
+    top: -8px;
+    left: -8px;
+    cursor: nw-resize;
+}
+
+/* Top-right corner */
+.resize-corner.top-right {
+    top: -8px;
+    right: -8px;
+    cursor: ne-resize;
+}
+
+/* Bottom-left corner */
+.resize-corner.bottom-left {
+    bottom: -8px;
+    left: -8px;
+    cursor: sw-resize;
+}
+
+/* Bottom-right corner */
+.resize-corner.bottom-right {
+    bottom: -8px;
+    right: -8px;
+    cursor: se-resize;
+}

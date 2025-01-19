@@ -1,0 +1,29 @@
+
+
+/*autocomplete*/
+.leis-autoComplete{
+    position: relative;
+    width: 100%;
+}
+.lis-autoListItem {
+    position: absolute;
+    width: 100%;
+    border: 1px solid #ddd;
+    background-color: #fff;
+    border-radius: 6px;
+    z-index: 1;
+    /* -webkit-box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) */
+}
+
+ .autoItem{
+    padding: 6px 10px;
+    cursor: pointer;
+    border: 1px solid #f6f3f3a3;
+    display: flex;
+    gap: 10px; 
+ }
+
+ .autoItem:hover{
+    background-color: var(--leis-select-cl);
+ }

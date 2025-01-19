@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* draggable */
+    .draggable{
+            position: absolute;
+            background-color: blue;
+            width: 200px;
+            height: 200px;
+            box-sizing: border-box;
+            user-select: none;
+            touch-action: none;
+        }
+
+
+
+    </style>
+</head>
+<body>
+   
+    <div class="draggable" id="d1"></div>
+    <div class="draggable" id="d2"></div>
+
+    <div id="resizable" class="box">
+        Resize me!
+        <!-- Add a resize handle in the corner -->
+        <div id="resize-handle" class="resize-handle"></div>
+    </div>
+    
+
+    <script src="draggable.js"></script>
+    <!-- <script src="resize.js"></script> -->
+    
+</body>
+</html>

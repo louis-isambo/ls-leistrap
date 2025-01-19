@@ -1,0 +1,40 @@
+
+/* table*/
+
+.leis-table-container {
+    position: relative;
+}
+
+.leis-table {
+    width: 100%;
+    /* border: 1px solid #332f2f; */
+    border-collapse: collapse;
+}
+
+.leis-table-head {
+    text-align: left;
+    border: inherit;
+}
+
+.leis-table-head .leis-table-heading {
+    /* border: 1px solid #332f2f; */
+    border: 1px solid #332f2f;
+    padding: 1px 10px;
+}
+
+.leis-table-body {
+    border: inherit;
+    border: 1px solid #332f2f;
+
+}
+
+.leis-table-data,
+.leis-table-row {
+    border: 1px solid #332f2f;
+}
+
+
+.leis-table-data,
+.leis-table-header {
+    padding: 1px 8px;
+}

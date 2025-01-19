@@ -1,0 +1,52 @@
+.ls-m-i{
+    padding: 6px 10px;
+    padding-right: 25px;
+    cursor: pointer;
+    gap: 10px;
+    margin: 0;
+    justify-content: space-between;
+}
+
+.ls-m-i:hover{
+    background-color: var(--leis-select-cl);
+}
+.ls-ls-m{
+    list-style: none;
+    list-style-position: unset;
+    overflow: hidden;
+    height: 100%;
+}
+.leis-menu{
+    position: relative;
+    width: 100%;
+    padding: 8px 0;
+    margin: 0;
+}
+
+.ls-i-0,
+.ls-i-1,
+.ls-i-2{
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-weight: 400;
+}
+
+.ls-i-0{
+    width: 10%;
+}
+.ls-i-1{
+    width: 55%;
+
+}
+.ls-i-2{
+    width: 35%;
+    display: flex;
+    justify-content: end;
+    color: #474646;
+
+}
+.nI{
+    padding-left: 25px;
+
+}

@@ -1,0 +1,479 @@
+:root{
+    --leis-primary-cl: #2c7be5;
+    --leis-primary-hover-cl: #1457b0;
+    --leis-primary-focus-bx-sh: 0 0 0 3px #007bff80;
+    --leis-primary-bd-hv-cl: #0062cc;
+    --leis-primary-bd-cl: #007bff;
+    --leis-primary-bd-fc-cl: #98caff;
+
+    --leis-secondary-cl: #868e96;
+    --leis-secondary-hover-cl: #717171;
+    --leis-primary-bd-cl: #868e96;
+    --leis-secondary-focus-bx-sh: 0 0 0 3px #a4acb5;
+    --leis-secondary-bd-hv-cl: #b0b6bc;
+    --leis-secondary-bd-fc-cl: #e4ecf5;
+
+    --leis-success-cl: #28a745;
+    --leis-success-hover-cl: #25933e;
+    --leis-success-bd-cl: #28a745;
+    --leis-success-focus-bx-sh: 0 0 0 3px #39c55a;
+    --leis-seccess-bd-hv-cl: #39da5e;
+
+
+    --leis-custom-success-cl: #2e443d;
+    --leis-custom-success-bd-cl: #83c89b;
+    --leis-custom-success-text-cl: #45875b;
+
+    --leis-warning-cl: #ffc107;
+    --leis-warning-hover-cl: #f0c648;
+    --leis-warning-bd-cl: #ffc107;
+    --leis-warning-focus-bx-sh: 0 0 0 3px #ffd24d;
+    --leis-warning-bd-hv-cl: #e5ba3b;
+
+    --leis-danger-cl: #dc3545;
+    --leis-danger-hover-cl: #ce2c3c;
+    --leis-danger-bd-cl: #dc3545;
+    --leis-danger-focus-bx-sh: 0 0 0 3px #f3384a;
+    --leis-danger-bd-hv-cl: #f3384a;
+
+    --leis-info-cl: #abdde5;
+    --leis-info-hover-cl: #89cdd7;
+    --leis-info-bd-cl: #abdde5;
+    --leis-info-focus-bx-sh: 0 0 0 3px #c6f5fc;
+    --leis-info-bd-hv-cl: #c6f5fc;
+
+    --leis-light-cl: #fefeff;
+    --leis-light-hover-cl: #dddde2;
+    --leis-light-bd-cl: #d8d8de;
+    --leis-light-focus-bx-sh: 0 0 0 3px #dffafd;
+    --leis-light-bd-hv-cl: #dffafd;
+
+    --leis-dark-cl: #23272b;
+    --leis-dark-hover-cl: #485157;
+    --leis-dark-bd-cl: #424950;
+    --leis-dark-focus-bx-sh: 0 0 0 3px #48525b;
+    --leis-dark-bd-hv-cl: #515960;
+
+    --leis-btn-bos-sh : 0 0 0 3px  var(--leis-baseColor);
+}
+
+
+
+
+.leis-btn,
+.leis-dropBtn {
+    outline: none;
+    border: 1px solid #1c7230ec;;
+    background-color: inherit;
+    cursor: pointer;
+    padding: 4px 16px;
+    appearance: none;
+    border-radius: 6px;
+    display: inline-block;
+    position: relative;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    -moz-user-select: none;
+    touch-action: manipulation;
+    vertical-align: middle;
+    white-space: nowrap;
+    font-size: 1rem;
+    font-family: inherit;
+    word-wrap: break-word;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    transition: color .15s ease, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+.leis-btn:focus{
+    -webkit-box-shadow: var(--leis-btn-bos-sh);
+    box-shadow: var(--leis-btn-bos-sh);
+    border-color: transparent;
+
+}
+
+.leis-btn-close {
+    border: 2px solid #dddddd90;
+    outline: none;
+    background-color: inherit;
+    cursor: pointer;
+    font-size: 1.5rem;
+    padding-left: 8px;
+    padding-right: 8px;
+    padding-bottom: 2px;
+    border-radius: 8px;
+}
+
+
+.leis-dropBtn {
+    gap: 10px;
+}
+
+
+
+.leis-btn-primary,
+.leis-dropBtn-primary {
+    background-color: var(--leis-primary-cl);
+    color: #fff !important;
+    border-radius: 6px;
+    border-width: 0.5px;
+    border-color: var(--leis-primary-bd-cl);
+}
+
+.leis-btn-primary:hover,    
+.leis-dropBtn-primary:hover {
+    background-color: var(--leis-primary-hover-cl);
+    color: #fff;
+
+}
+
+.leis-btn-primary:focus,
+.leis-dropBtn-primary:focus,
+.leis-btn-primary.focus,
+.leis-dropBtn-primary.focus {
+    -webkit-box-shadow: var(--leis-primary-focus-bx-sh);
+    -o-box-shadow: var(--leis-primary-focus-bx-sh);
+    box-shadow: var(--leis-primary-focus-bx-sh);
+}
+
+.leis-btn-primary:focus:hover {
+    border: 1px solid var(--leis-primary-bd-fc-cl);
+}
+
+.leis-btn-secondary,
+.leis-dropBtn-secondary {
+    background-color: var(--leis-secondary-cl);
+    color: #fff !important;
+    border-radius: 6px;
+    border: 0.5px solid var(--leis-secondary-bd-cl);
+}
+
+.leis-btn-secondary:hover,
+.leis-dropBtn-secondary:hover {
+    background-color: var(--leis-secondary-hover-cl);
+
+}
+
+.leis-btn-secondary:focus,
+.leis-btn-secondary.focus,
+.leis-dropBtn-secondary:focus,
+.leis-dropBtn-secondary.focus,
+.leis-btn-close:focus {
+    -webkit-box-shadow: var(--leis-secondary-focus-bx-sh);
+    -o-box-shadow: var(--leis-secondary-focus-bx-sh);
+    box-shadow: var(--leis-secondary-focus-bx-sh);
+    border: 1px solid var(--leis-secondary-bd-cl);
+    transition: .2s ease-in;
+}
+
+
+.leis-btn-secondary:focus:hover {
+    border: 1px solid var(--leis-secondary-bd-fc-cl);
+
+}
+
+.leis-btn-success,
+.leis-dropBtn-success {
+    background-color: var(--leis-success-cl);
+    color: #fff !important;
+    border-radius: 6px;
+    border-width: 0.5px;
+    border-color: var(--leis-success-bd-cl);
+}
+
+.leis-btn-success:hover,
+.leis-dropBtn-success:hover {
+    background-color: var(--leis-success-hover-cl);
+
+}
+
+.leis-btn-success:focus,
+.leis-btn-success.focus,
+.leis-dropBtn-success:focus,
+.leis-dropBtn-success.focus {
+    -webkit-box-shadow: var(--leis-success-focus-bx-sh);
+    -o-box-shadow: var(--leis-success-focus-bx-sh);
+    box-shadow: var(--leis-success-focus-bx-sh);
+}
+
+.leis-btn-success:focus:hover {
+    border: 1px solid var(--leis-custom-success-bd-cl);
+}
+
+.leis-btn-warning,
+.leis-dropBtn-warning {
+    background-color: var(--leis-warning-cl);
+    color: black !important;
+    border-radius: 6px;
+    border-width: 0.5px;
+    border-color: var(--leis-warning-bd-cl);
+}
+
+.leis-btn-warning:hover,
+.leis-dropBtn-warning:hover {
+    background-color: var(--leis-warning-hover-cl);
+    border-color: var(--leis-warning-bd-hv-cl)
+}
+
+.leis-btn-warning:focus,
+.leis-btn-warning.focus,
+.leis-dropBtn-warning:focus,
+.leis-dropBtn-warning.focus {
+    -webkit-box-shadow: var(--leis-warning-focus-bx-sh);
+    -o-box-shadow: var(--leis-warning-focus-bx-sh);
+    box-shadow: var(--leis-warning-focus-bx-sh);
+}
+
+.leis-btn-danger,
+.leis-dropBtn-danger {
+    background-color: var(--leis-danger-cl);
+    color: white !important;
+    border-radius: 6px;
+    border-width: 0.5px;
+    border-color: var(--leis-danger-bd-cl);
+}
+
+.leis-btn-danger:hover,
+.leis-dropBtn-danger:hover {
+    background-color: var(--leis-danger-hover-cl);
+    border-color: var(--leis-danger-bd-hv-cl)
+}
+
+.leis-btn-danger:focus,
+.leis-btn-danger.focus,
+.leis-dropBtn-danger:focus,
+.leis-dropBtn-danger.focus {
+    -webkit-box-shadow: var(--leis-danger-focus-bx-sh);
+    -o-box-shadow: var(--leis-danger-focus-bx-sh);
+    box-shadow: var(--leis-danger-focus-bx-sh);
+}
+
+.leis-btn-info,
+.leis-dropBtn-info {
+    background-color: var(--leis-info-cl);
+    color: black !important;
+    border-radius: 6px;
+    border-width: 0.5px;
+    border-color: var(--leis-info-bd-cl);
+}
+
+.leis-btn-info:hover,
+.leis-dropBtn-info:hover {
+    background-color: var(--leis-info-hover-cl);
+    border-color: var(--leis-info-bd-hv-cl)
+}
+
+.leis-btn-info:focus,
+.leis-btn-info.focus,
+.leis-dropBtn-info:focus,
+.leis-dropBtn-info.focus {
+    -webkit-box-shadow: var(--leis-info-focus-bx-sh);
+    -o-box-shadow: var(--leis-info-focus-bx-sh);
+    box-shadow: var(--leis-info-focus-bx-sh);
+}
+
+.leis-btn-light,
+.leis-dropBtn-light {
+    background-color: var(--leis-light-cl);
+    color: black !important;
+    border-radius: 6px;
+    border-width: 0.5px;
+    border-color: var(--leis-light-bd-cl);
+}
+
+.leis-btn-light:hover,
+.leis-dropBtn-light:hover {
+    background-color: var(--leis-light-hover-cl);
+    border-color: var(--leis-light-bd-hv-cl)
+}
+
+.leis-btn-light:focus,
+.leis-btn-light.focus,
+.leis-dropBtn-light:focus,
+.leis-dropBtn-light.focus {
+    -webkit-box-shadow: var(--leis-light-focus-bx-sh);
+    -o-box-shadow: var(--leis-light-focus-bx-sh);
+    box-shadow: var(--leis-light-focus-bx-sh);
+}
+
+.leis-btn-dark,
+.leis-dropBtn-dark {
+    background-color: var(--leis-dark-cl);
+    color: #ddd !important;
+    border-radius: 6px;
+    border-width: 0.5px;
+    border-color: var(--leis-dark-bd-cl);
+}
+
+.leis-btn-dark:hover,
+.leis-dropBtn-dark:hover {
+    background-color: var(--leis-dark-hover-cl);
+    border-color: var(--leis-dark-bd-hv-cl)
+}
+
+.leis-btn-dark:focus,
+.leis-btn-dark.focus,
+.leis-dropBtn-dark:focus {
+    -webkit-box-shadow: var(--leis-dark-focus-bx-sh);
+    -o-box-shadow: var(--leis-dark-focus-bx-sh);
+    box-shadow: var(--leis-dark-focus-bx-sh);
+}
+
+.leis-outline-btn-primary {
+    border-color: var(--leis-primary-cl);
+    background-color: transparent !important;
+    color: var(--leis-primary-cl) !important;
+    -webkit-box-shadow: var(--leis-primary-cl) 0 0 2px inset;
+    box-shadow: var(--leis-primary-cl) 0 0 2px inset;
+}
+
+.leis-outline-btn-primary:hover,
+.leis-outline-btn-primary.focus,
+.leis-outline-btn-primary:focus {
+    color: #fff !important;
+    background-color: var(--leis-primary-cl) !important;
+}
+
+.leis-outline-btn-secondary {
+    border-color: var(--leis-secondary-cl);
+    background-color: transparent !important;
+    color: var(--leis-secondary-cl) !important;
+    -webkit-box-shadow: var(--leis-secondary-cl) 0 0 3px inset;
+    box-shadow: var(--leis-secondary-cl) 0 0 2px inset;
+}
+
+.leis-outline-btn-secondary:hover,
+.leis-outline-btn-secondary.focus,
+.leis-outline-btn-secondary:focus {
+    color: #fff !important;
+    background-color: var(--leis-secondary-cl) !important;
+}
+
+.leis-outline-btn-dark {
+    border-color: var(--leis-dark-cl);
+    background-color: transparent !important;
+    color: #9c9999 !important;
+    -webkit-box-shadow: var(--leis-dark-cl) 0 0 3px inset;
+    box-shadow: var(--leis-dark-cl) 0 0 2px inset;
+}
+
+.leis-outline-btn-dark:hover,
+.leis-outline-btn-dark.focus,
+.leis-outline-btn-dark:focus {
+    color: #fff !important;
+    background-color: var(--leis-dark-cl) !important;
+}
+
+.leis-outline-btn-light {
+    border-color: var(--leis-light-cl);
+    background-color: transparent !important;
+    color: var(--leis-primary-bd-hv-cl) !important;
+    -webkit-box-shadow: #ccc 0 0 3px inset;
+    box-shadow: #ccc 0 0 2px inset;
+}
+
+.leis-outline-btn-light:hover,
+.leis-outline-btn-light.focus,
+.leis-outline-btn-light:focus {
+    color: var(--leis-primary-bd-hv-cl) !important;
+    background-color: var(--leis-light-cl) !important;
+}
+
+.leis-outline-btn-success {
+    border-color: var(--leis-success-cl);
+    background-color: transparent !important;
+    color: var(--leis-success-cl) !important;
+    -webkit-box-shadow: var(--leis-success-cl) 0 0 3px inset;
+    box-shadow: var(--leis-success-cl) 0 0 2px inset;
+}
+
+.leis-outline-btn-success:hover,
+.leis-outline-btn-success.focus,
+.leis-outline-btn-success:focus {
+    color: #fff !important;
+    background-color: var(--leis-success-cl) !important;
+}
+
+.leis-outline-btn-info {
+    border-color: var(--leis-info-cl);
+    background-color: transparent !important;
+    color: var(--leis-info-hover-cl) !important;
+    -webkit-box-shadow: var(--leis-info-cl) 0 0 3px inset;
+    box-shadow: var(--leis-info-cl) 0 0 2px inset;
+}
+
+.leis-outline-btn-info:hover,
+.leis-outline-btn-info.focus,
+.leis-outline-btn-info:focus {
+    color: black !important;
+    background-color: var(--leis-info-cl) !important;
+}
+
+.leis-outline-btn-warning {
+    border-color: var(--leis-warning-cl);
+    background-color: transparent !important;
+    color: var(--leis-warning-cl) !important;
+    -webkit-box-shadow: var(--leis-warning-cl) 0 0 3px inset;
+    box-shadow: var(--leis-warning-cl) 0 0 2px inset;
+}
+
+.leis-outline-btn-warning:hover,
+.leis-outline-btn-warning.focus,
+.leis-outline-btn-warning:focus {
+    color: black !important;
+    background-color: var(--leis-warning-cl) !important;
+}
+
+.leis-outline-btn-danger {
+    border-color: var(--leis-danger-cl);
+    background-color: transparent !important;
+    color: var(--leis-danger-cl) !important;
+    -webkit-box-shadow: var(--leis-danger-cl) 0 0 3px inset;
+    box-shadow: var(--leis-danger-cl) 0 0 2px inset;
+}
+
+.leis-outline-btn-danger:hover,
+.leis-outline-btn-danger.focus,
+.leis-outline-btn-danger:focus {
+    color: #fff !important;
+    background-color: var(--leis-danger-cl) !important;
+}
+
+.leis-btn.leis-btn-small,
+.leis-btn-primary.leis-btn-small,
+.leis-btn-secondary.leis-btn-small,
+.leis-btn-success.leis-btn-small,
+.leis-btn-info.leis-btn-small,
+.leis-btn-danger.leis-btn-small,
+.leis-btn-warning.leis-btn-small,
+.leis-btn-light.leis-btn-small,
+.leis-btn-dark.leis-btn-small {
+    padding: 2px 10px;
+    font-size: 1rem;
+}
+
+.leis-btn.leis-btn-large,
+.leis-btn-primary.leis-btn-large,
+.leis-btn-secondary.leis-btn-large,
+.leis-btn-success.leis-btn-large,
+.leis-btn-info.leis-btn-large,
+.leis-btn-danger.leis-btn-large,
+.leis-btn-warning.leis-btn-large,
+.leis-btn-light.leis-btn-large,
+.leis-btn-dark.leis-btn-large {
+    padding: 0.555rem 16px;
+    font-size: 1.22rem;
+    font-weight: inherit;
+    min-width: 140px;
+}
+
+.leis-btn-icon {
+    font-size: inherit;
+    color: inherit;
+    font-weight: inherit;
+}
+
+.leis-btn-w-icon {
+    display: flex;
+    gap: 0.5rem;
+}

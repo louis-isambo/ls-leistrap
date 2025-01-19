@@ -1,0 +1,174 @@
+:root{
+    
+    --leis-card-cl: #fff;
+    --leis-card-bx-sh: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    --leis-card-bd: 1.5px solid rgba(0, 0, 0, .16);
+    --leis-card-sms-bx-sh: rgba(0, 0, 0, 0.05) 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+}
+
+
+.leis-card .leis-img-card {
+    max-height: calc(80vh - 7rem);
+}
+
+.leis-card.boxSh-off {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+.leis-card-body {
+    -webkit-box-flex: 1;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    padding: 1.25rem;
+}
+
+.leis-card-title {
+    margin-bottom: 0.75rem;
+    -webkit-white-space: nowrap;
+    -ms-white-space: nowrap;
+    white-space: nowrap;
+}
+
+.leis-card-subtitle {
+    margin-top: -0.375rem;
+    margin-bottom: 0.5px;
+    font-weight: 100;
+    line-height: 1.2;
+    color: var(--leis-subtitle-cl);
+}
+
+.leis-card-header {
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 0;
+    background-color: rgba(0, 0, 0, 0.03);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+.leis-card-text {
+    font-size: 15.5px;
+    font-family: 'Poppins-Regular' system-ui, -apple-system,
+        BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
+        Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    -webkit-white-space: nowrap;
+    word-wrap: break-word;
+
+}
+
+.leis-card-footer {
+    padding: 0.5rem 1.25rem;
+    background-color: rgba(0, 0, 0, 0.03);
+    border-top: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+
+.leis-card-img {
+    width: 100%;
+    height: auto;
+    border-radius: calc(6px - 1px);
+}
+
+.leis-card-img-top {
+    width: 100%;
+    height: auto;
+    border-top-left-radius: calc(6px - 1px);
+    border-top-right-radius: calc(6px - 1px);
+}
+
+.leis-card-img-bottom {
+    width: 100%;
+    border-bottom-right-radius: calc(0.25rem - 1px);
+    border-bottom-left-radius: calc(0.25rem - 1px);
+}
+
+.leis-card-sms {
+    padding: 4.5px;
+    -webkit-box-shadow: var(--leis-card-sms-bx-sh);
+    box-shadow: var(--leis-card-sms-bx-sh);
+    border: var(--leis-card-bd)
+}
+
+.leis-img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.leis-cover-pic-card {
+    display: block;
+    overflow: hidden;
+    height: 200px;
+}
+
+.leis-cover-pic-card>.leis-img {
+    width: 100%;
+    filter: var(--leis-effect-img);
+}
+
+.leis-img-card {
+    position: relative;
+    min-width: 0;
+    overflow: hidden;
+    border: none;
+    outline: none;
+    outline: none;
+}
+
+.leis-cover-pic-card+.leis-img-card {
+    position: relative;
+    width: 200px !important;
+    height: 200px !important;
+    overflow: hidden !important;
+    border-radius: 50% !important;
+    outline: 3.5px solid var(--leis-img-outline-cl);
+}
+
+.leis-img-card>.leis-img {
+    display: block;
+    width: 100%;
+    height: auto;
+    min-height: 200px !important;
+    filter: var(--leis-effect-img);
+}
+
+.leis-cover-pic-card+.leis-img-card {
+    position: absolute;
+    top: calc(200px - 7rem);
+    left: 5%;
+}
+
+
+
+.leis-img-card+.leis-card-title,
+.leis-card-title+.leis-card-subtitle {
+    position: relative;
+    left: 5%;
+    width: 50%;
+}
+
+.leis-card-btn-cd {
+    width: 100%;
+}
+
+.leis-card-btn-cd>[class*="btn"] {
+    border: none;
+    outline: none;
+}
+
+.leis-card-btn-cd>.leis-btn-light {
+    background-color: var(--leis-light-hover-cl);
+}
+
+.leis-card-btn-cd>.leis-btn-light:hover {
+    color: var(--leis-primary-cl) !important;
+}
+
+.leis-card-body>.leis-card-btn-cd {
+    border: none;
+    outline: none;
+    padding-bottom: 6px;
+}
+
+.leis-card-btn-cd+[class="leis-line-h"] {
+    margin: 14px 0px;
+}

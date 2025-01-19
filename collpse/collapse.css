@@ -1,0 +1,73 @@
+
+.colla-container{
+    position : relative
+}
+.colla-container .collaBtn{
+    cursor: pointer;
+    padding: 6px 40px;
+    padding-right: 0;
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.colla-cd{
+    max-height: 0;
+    overflow: hidden;
+    cursor: pointer;
+    transition: 1s ease max-height;
+}
+
+.colla-cd.clicked{
+    max-height: 300vh;
+}
+
+.colla-item{
+    padding: 6px 50px;
+    padding-right: 0;
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+
+    
+}
+
+.colla-item:hover,
+.colla-container .collaBtn:hover{
+    background-color: var(--leis-select-cl);
+
+}
+
+.colla-line{
+    position: absolute;
+    width: 2px;
+    height: calc(100% - 30px);
+    top: 20px;
+    left : 15Px;
+    background: #ddd;
+    outline: none;
+    border: none;
+
+}
+.colla-container .collaBtn.cd .arrow{
+    position: absolute;
+    display: inline-block;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    width: 8px;
+    height: 8px;
+    top: 15px;
+    left: 20px;
+    font-weight: 500;
+    font-size: 16px;
+    border-bottom: 2px solid;
+    border-left: 2px solid;
+    transform: rotateY(180deg) rotateZ(40deg);
+    transition: .16s;
+}
+
+.colla-container .collaBtn.cd.clicked .arrow{
+        transform: rotateY(180deg) rotateZ(-40deg);
+}

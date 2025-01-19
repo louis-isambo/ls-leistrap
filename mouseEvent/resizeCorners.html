@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+    width: 200px;
+    height: 150px;
+    border: 2px solid #000;
+    position: relative;
+}
+
+/* Style each corner handle */
+.resize-handle {
+    position: absolute;
+    background-color: transparent;
+    width: 10px;
+    height: 10px;
+}
+
+/* Top-left handle */
+.resize-handle.top-left {
+    top: -5px;
+    left: -5px;
+    cursor: nw-resize;
+}
+
+/* Top-right handle */
+.resize-handle.top-right {
+    top: -5px;
+    right: -5px;
+    cursor: ne-resize;
+}
+
+/* Bottom-left handle */
+.resize-handle.bottom-left {
+    bottom: -5px;
+    left: -5px;
+    cursor: sw-resize;
+}
+
+/* Bottom-right handle */
+.resize-handle.bottom-right {
+    bottom: -5px;
+    right: -5px;
+    cursor: se-resize;
+}
+
+    </style>
+</head>
+<body>
+    
+    <div id="resizable" class="box">
+        <!-- Resize handles for corners -->
+        <div class="resize-handle top-left"></div>
+        <div class="resize-handle top-right"></div>
+        <div class="resize-handle bottom-left"></div>
+        <div class="resize-handle bottom-right"></div>
+    </div>
+    
+    <script src="resizeCorners.js"></script>
+</body>
+</html>

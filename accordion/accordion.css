@@ -1,0 +1,30 @@
+:root{
+    --leis-accordion-bx-sh: rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 2px 1.5px;
+    --leis-accordion-head-cl: #525752;
+    --leis-accordion-footer-cl: #c4c2c7;
+    --leis-accordion-head-txt-cl: hsla(0, 14%, 93%, 0.889);
+    --leis-accordion-footer-bx-sh: 0 0 3px rgba(11, 11, 11, 0.543);
+}
+
+
+.leis-accordion-card {
+    outline: none;
+    border: none;
+    min-width: 0;
+    border-radius: 5px;
+    -webkit-box-shadow: var(--leis-accordion-bx-sh);
+    box-shadow: var(--leis-accordion-bx-sh);
+    background-color: var(--leis-default-cl);
+}
+
+
+.leis-accordion-btn {
+    width: 100%;
+    position: relative;
+    cursor: pointer;
+    padding: 12px 14px;
+    text-align: left;
+    border: none;
+    outline: none;
+    transition: 0.4s ease-in-out;
+}

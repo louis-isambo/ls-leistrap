@@ -1,0 +1,151 @@
+.leis-card-radioBtns-container,
+.leis-card-checkboxBtns-container,
+.leis-card-switchboxBtns-container {
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    margin-bottom: 0.2rem;
+    gap: 0.255rem;
+}
+
+.leis-card-radioBtns-container *>label,
+.leis-card-checkboxBtns-container *>label,
+.leis-card-switchboxBtns-container *>label,
+.leis-textboxinput-container *>label {
+    font-size: inherit;
+    font-weight: inherit;
+}
+
+.leis-radioBtns-card,
+.leis-checkboxBtns-card,
+.leis-switchboxBtns-card {
+    position: relative;
+    width: auto;
+    display: flex;
+    flex-direction: row;
+    text-overflow: ellipsis;
+    justify-content: start;
+    flex-wrap: wrap;
+    gap: 0.255rem;
+}
+
+.leis-radioBtn,
+.leis-checkboxtBtn,
+.leis-switchboxtBtn {
+    appearance: none;
+    font-size: inherit;
+    font-weight: inherit;
+}
+
+
+
+.leis-radioBtn::after,
+.leis-checkboxtBtn,
+.leis-switchboxtBtn {
+    display: inline-block;
+    content: "";
+    width: 15px;
+    height: 15px;
+    background-color: inherit;
+    border-radius: 50%;
+    border: 1px solid #aaa;
+
+}
+
+.leis-checkboxtBtn {
+    top: 5px;
+    border: 1px solid #aaa;
+    outline: none;
+    border-radius: 0.222em;
+}
+
+.leis-switchboxtBtn {
+    top: 7px;
+    height: 15px;
+    width: 30px;
+    outline: none;
+    border-radius: 7px;
+}
+
+.leis-switchboxtBtn::after {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    top: 15%;
+    left: 8%;
+    border-radius: 50%;
+    background-color: #aaa;
+    transition: left .3s ease;
+}
+
+.leis-checkboxtBtn:checked,
+.leis-switchboxtBtn:checked {
+    outline: none;
+    background-color: #007bff;
+    filter: brightness(100%);
+}
+
+.leis-switchboxtBtn:checked::after {
+    left: 52%;
+    background-color: #fff;
+}
+
+.leis-checkboxtBtn:focus,
+.leis-switchboxtBtn:focus {
+    box-shadow: 0 0 0 .25rem rgba(13, 110, 253, .25);
+}
+
+.leis-checkboxtBtn:checked::after {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    width: 8px;
+    height: 5px;
+    left: calc(50% - 5px);
+    top: 20%;
+    border-left: 2px solid #fff;
+    border-bottom: 2px solid #fff;
+    transform: rotateZ(-60deg);
+
+}
+
+.leis-radioBtn:checked::after {
+    border: 0.333em solid #007bff;
+    filter: brightness(100%);
+}
+
+.leis-radioBtn:focus::after {
+    outline: none;
+    box-shadow: 0 0 0 .25rem rgba(13, 110, 253, .25)
+}
+
+
+.leis-textboxinput-container {
+    width: 100%;
+    height: auto;
+    padding: none;
+    margin: 0;
+    margin-bottom: 0.2rem;
+    padding-top: 0.5rem;
+}
+
+.leis-textbox-card {
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: start;
+    flex-wrap: wrap-reverse;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.leis-textbox-card label {
+    display: flex;
+    justify-content: start;
+    align-content: center;
+}
