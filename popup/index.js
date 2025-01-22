@@ -15,16 +15,17 @@ leistrap.addCss(popCss)
  * @param {Array<"left" | "right" |"top" |"bottom">} side 
  * @param {boolean} [drag=true] 
  */
-function DropUp(button, side, drag=true) {
+function DropUp(button, side, drag=true, parent) {
 
     // all eventListeners
     const eventMap = {}
-
+    
     // h custom property
     let action;;
-
+ 
+    
     const pop = leistrap.create("div", {
-        parent: "main",
+        parent: parent == "sb-m" ? null : "main",
         className: "leis-dropdown-content leis-pop",
         onclick: (e) => {
             e.stopPropagation()

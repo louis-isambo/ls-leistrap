@@ -1379,15 +1379,16 @@
    * @param {Array<"left" | "right" |"top" |"bottom">} side 
    * @param {boolean} [drag=true] 
    */
-  function DropUp(button, side, drag=true) {
+  function DropUp(button, side, drag=true, parent) {
 
       // all eventListeners
       const eventMap = {};
-
+      
       // h custom property
-      let action;
+      let action; 
+      
       const pop = leistrap.create("div", {
-          parent: "main",
+          parent: parent == "sb-m" ? null : "main",
           className: "leis-dropdown-content leis-pop",
           onclick: (e) => {
               e.stopPropagation();
@@ -1525,24 +1526,16 @@
       });
   }
 
-  var menuCss = ".ls-m-i{\r\n    padding: 6px 10px;\r\n    padding-right: 25px;\r\n    cursor: pointer;\r\n    gap: 10px;\r\n    margin: 0;\r\n    justify-content: space-between;\r\n}\r\n\r\n.ls-m-i:hover{\r\n    background-color: var(--leis-select-cl);\r\n}\r\n.ls-ls-m{\r\n    list-style: none;\r\n    list-style-position: unset;\r\n    overflow: hidden;\r\n    height: 100%;\r\n}\r\n.leis-menu{\r\n    position: relative;\r\n    width: 100%;\r\n    padding: 8px 0;\r\n    margin: 0;\r\n}\r\n\r\n.ls-i-0,\r\n.ls-i-1,\r\n.ls-i-2{\r\n    overflow: hidden;\r\n    white-space: nowrap;\r\n    text-overflow: ellipsis;\r\n    font-weight: 400;\r\n}\r\n\r\n.ls-i-0{\r\n    width: 10%;\r\n}\r\n.ls-i-1{\r\n    width: 55%;\r\n\r\n}\r\n.ls-i-2{\r\n    width: 35%;\r\n    display: flex;\r\n    justify-content: end;\r\n    color: #474646;\r\n\r\n}\r\n.nI{\r\n    padding-left: 25px;\r\n\r\n}";
+  var menuCss = ".ls-m-i{\r\n    padding: 6px 10px;\r\n    padding-right: 25px;\r\n    cursor: pointer;\r\n    gap: 10px;\r\n    margin: 0;\r\n    justify-content: space-between;\r\n}\r\n\r\n.ls-m-i:hover{\r\n    background-color: var(--leis-select-cl);\r\n}\r\n.ls-ls-m{\r\n    list-style: none;\r\n    list-style-position: unset;\r\n    overflow: hidden;\r\n    height: 100%;\r\n}\r\n.leis-menu{\r\n    width: 100%;\r\n    padding: 8px 0;\r\n    margin: 0;\r\n}\r\n\r\n.ls-i-0,\r\n.ls-i-1,\r\n.ls-i-2{\r\n    overflow: hidden;\r\n    white-space: nowrap;\r\n    text-overflow: ellipsis;\r\n    font-weight: 400;\r\n}\r\n\r\n.ls-i-0{\r\n    width: 10%;\r\n}\r\n.ls-i-1{\r\n    width: 55%;\r\n\r\n}\r\n.ls-i-2{\r\n    width: 35%;\r\n    display: flex;\r\n    justify-content: end;\r\n    color: #474646;\r\n\r\n}\r\n.nI{\r\n    padding-left: 25px;\r\n\r\n}";
 
   leistrap.addCss(menuCss);
 
-  function leisMenu(useIcon) {
-      const pop = DropUp(null, null, false);
-
-      window.addEventListener("contextmenu", function (e) {
-          e.preventDefault();
-          pop.move({
-              x: e.clientX,
-              y: e.clientY,
-              left: e.clientX,
-              top: e.clientY,
-              height: 10,
-              width: 10
-          });
-      });
+  function leisMenu(useIcon, parent) {
+      const pop = DropUp(null, null, false, parent);
+      /**
+      * @type {leistrap.Leistrap<HTMLElement> | HTMLElement }
+      */
+      let target = null;
 
       pop.pop.setClassName("leis-menu");
       const ul = leistrap.create("ul", {
@@ -1551,7 +1544,24 @@
           
       });
 
-      function addOption(icon, title, subTitle){
+
+      function listen(evName){
+          window.addEventListener(evName, function (e) {
+
+              e.preventDefault();
+              MENU.target = e.target;
+              pop.move({
+                  x: e.clientX,
+                  y: e.clientY,
+                  left: e.clientX,
+                  top: e.clientY,
+                  height: 10,
+                  width: 10
+              });
+          });
+      }
+
+      function addOption(icon, title, subTitle, subMenu_){
           const li = leistrap.create("li", {
               className : "ls-m-i leis-flex leis-row",
               parent : ul,
@@ -1562,7 +1572,18 @@
 
    
           li.content[1].setText(title);
-          li.content[2].setText(subTitle);
+          if(subMenu_){
+              li.add(subMenu_.pop.pop);
+              
+              li.content[2].setText("SubMenu");
+              li.addEvent("mouseenter", (e)=> showSubMenu(subMenu_, e, li));
+              li.addEvent("mouseleave", ()=> hideSubMenu(subMenu_));
+              
+          }
+          else {
+              li.content[2].setText(subTitle);
+          }
+          
           {
               li.content[0].destroy();
               li.setClassName("nI");
@@ -1572,15 +1593,69 @@
 
       let MENU = {
           addOption,
-          pop
+          pop,
+          target,
+          listen
       };
       return MENU
   }
 
+
+
+  let idMenu;
+  function showSubMenu(pop, e, elem){
+      
+      if(idMenu){
+          clearTimeout(idMenu);
+      }
+      
+      idMenu = setTimeout(function(){
+          pop.pop.move(elem._conf.getBoundingClientRect(), ["left", "right"]);
+          clearTimeout(idMenu);
+      }, 500);
+
+  }
+
+  function hideSubMenu(menu){
+      if(idMenu){
+          menu.pop.hide();
+          clearTimeout(idMenu);
+      }
+       
+
+  }
+
   leistrap.whenReady(function(){
+      this.add(leistrap.create("p", {text: "Hello world "}));
       let m = leisMenu();
+      let sm = leisMenu(null, "sb-m");
+      sm.pop.pop.setStyleSheet({
+          width : '200px',
+          height : "300px"
+      
+      });
+
+      let sm2 = leisMenu(null, "sb-m");
+      sm2.pop.pop.setStyleSheet({
+          width : '200px',
+          height : "300px"
+      
+      });
+
+      let sm3 = leisMenu(null, "sb-m");
+      sm3.pop.pop.setStyleSheet({
+          width : '200px',
+          height : "300px"
+      
+      });
+
+      sm.addOption(null, "hey", "c",  sm2);
+      m.listen("contextmenu");
+      m.addOption(null, `menu item`, "copy ", sm);
+      sm.addOption(null, `menu item`, "copy ", sm3);
       rangeList(12).forEach(function(item){
-          m.addOption(null, `menu item ${item}`, "copy " + item.toString());
+          m.addOption(null, `menu item ${item}`, "copy " + item.toString())
+          .addEvent("click", ()=> console.log(m.target));
       });
 
       m.pop.pop.setStyleSheet({
