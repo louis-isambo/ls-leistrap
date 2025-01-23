@@ -619,7 +619,6 @@
               // call all useInit Hooks and pass the this as parameter
               hooks.callHook("useInit", DisplayError, this);
 
-
           }
 
 
@@ -869,6 +868,9 @@
       const main = new BaseElement(document.createElement("div"));
       main.data.id = "main";
 
+      const win = new BaseElement(document.createElement("div"));
+      win._conf = window;
+
       // set the default style
       document.head.append(
           new BaseElement(document.createElement("style")).setText(leistrapCss).render()
@@ -985,6 +987,7 @@
       }
 
       leistrap.main = main;
+      leistrap.win = win;
       leistrap.event = mainEvent;
       leistrap.create = create;
       leistrap.whenReady = whenReady;
@@ -1526,7 +1529,7 @@
       });
   }
 
-  var menuCss = ".ls-m-i{\r\n    padding: 6px 10px;\r\n    padding-right: 25px;\r\n    cursor: pointer;\r\n    gap: 10px;\r\n    margin: 0;\r\n    justify-content: space-between;\r\n}\r\n\r\n.ls-m-i:hover{\r\n    background-color: var(--leis-select-cl);\r\n}\r\n.ls-ls-m{\r\n    list-style: none;\r\n    list-style-position: unset;\r\n    overflow: hidden;\r\n    height: 100%;\r\n}\r\n.leis-menu{\r\n    width: 100%;\r\n    padding: 8px 0;\r\n    margin: 0;\r\n}\r\n\r\n.ls-i-0,\r\n.ls-i-1,\r\n.ls-i-2{\r\n    overflow: hidden;\r\n    white-space: nowrap;\r\n    text-overflow: ellipsis;\r\n    font-weight: 400;\r\n}\r\n\r\n.ls-i-0{\r\n    width: 10%;\r\n}\r\n.ls-i-1{\r\n    width: 55%;\r\n\r\n}\r\n.ls-i-2{\r\n    width: 35%;\r\n    display: flex;\r\n    justify-content: end;\r\n    color: #474646;\r\n\r\n}\r\n.nI{\r\n    padding-left: 25px;\r\n\r\n}";
+  var menuCss = ".ls-m-i{\r\n    padding: 6px 10px;\r\n    padding-right: 25px;\r\n    cursor: pointer;\r\n    gap: 10px;\r\n    margin: 0;\r\n    justify-content: space-between;\r\n}\r\n\r\n.ls-m-i:hover{\r\n    background-color: var(--leis-select-cl);\r\n}\r\n.ls-ls-m{\r\n    list-style: none;\r\n    list-style-position: unset;\r\n    overflow: hidden;\r\n    height: 100%;\r\n}\r\n.leis-menu{\r\n    width: 100%;\r\n    padding: 8px 0;\r\n    margin: 0;\r\n}\r\n\r\n.ls-i-0,\r\n.ls-i-1,\r\n.ls-i-2{\r\n    overflow: hidden;\r\n    white-space: nowrap;\r\n    text-overflow: ellipsis;\r\n    font-weight: 400;\r\n}\r\n\r\n.ls-i-0{\r\n    width: 10%;\r\n}\r\n.ls-i-1{\r\n    width: 55%;\r\n\r\n}\r\n.ls-i-2{\r\n    width: 35%;\r\n    display: flex;\r\n    justify-content: end;\r\n    color: #474646;\r\n\r\n}\r\n.nI{\r\n    padding-left: 25px;\r\n\r\n}\r\n\r\n.sb-m{\r\n    position: relative;\r\n    display: inline-block;\r\n    border: none;\r\n    outline: none;\r\n    background-color: transparent;\r\n    width: 8px;\r\n    height: 8px;\r\n    top: 8px;\r\n    left:0;\r\n    font-weight: 500;\r\n    font-size: 16px;\r\n    border-bottom: 2px solid;\r\n    border-left: 2px solid;\r\n    transform: rotateY(180deg) rotateZ(40deg);\r\n    transition: .16s;\r\n}";
 
   leistrap.addCss(menuCss);
 
@@ -1545,10 +1548,23 @@
       });
 
 
-      function listen(evName){
-          window.addEventListener(evName, function (e) {
-
+      /**
+       * show the menu
+       * @param {leistrap.Leistrap<HTMLElement>} elem 
+       * @param {keyof WindowEventMap} evName 
+       */
+      function listen(elem, evName){
+        leistrap.win.addEvent(evName, function (e) {
               e.preventDefault();
+             if(!elem){
+              move();
+              return;
+             }
+              if(elem && elem._conf === e.target){
+                  move();
+             }
+             
+             function move(){
               MENU.target = e.target;
               pop.move({
                   x: e.clientX,
@@ -1558,7 +1574,11 @@
                   height: 10,
                   width: 10
               });
+             }
+
           });
+
+          
       }
 
       function addOption(icon, title, subTitle, subMenu_){
@@ -1575,7 +1595,7 @@
           if(subMenu_){
               li.add(subMenu_.pop.pop);
               
-              li.content[2].setText("SubMenu");
+              li.content[2].setText("").setClassName("sb-m");
               li.addEvent("mouseenter", (e)=> showSubMenu(subMenu_, e, li));
               li.addEvent("mouseleave", ()=> hideSubMenu(subMenu_));
               
@@ -1626,6 +1646,9 @@
   }
 
   leistrap.whenReady(function(){
+
+     
+
       this.add(leistrap.create("p", {text: "Hello world "}));
       let m = leisMenu();
       let sm = leisMenu(null, "sb-m");
@@ -1649,8 +1672,17 @@
       
       });
 
+      rangeList(5).forEach(function(item){
+          let btn = leistrap.create("div", {
+              text : "..."+item,
+              parent : "main"
+          });
+          m.listen(btn, "contextmenu");
+      });
+      
+
       sm.addOption(null, "hey", "c",  sm2);
-      m.listen("contextmenu");
+      // m.listen(leistrap.win, "contextmenu")
       m.addOption(null, `menu item`, "copy ", sm);
       sm.addOption(null, `menu item`, "copy ", sm3);
       rangeList(12).forEach(function(item){

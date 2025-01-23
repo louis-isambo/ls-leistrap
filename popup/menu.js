@@ -28,8 +28,17 @@ function leisMenu(useIcon, parent) {
      * @param {keyof WindowEventMap} evName 
      */
     function listen(elem, evName){
-      elem.addEvent(evName, function (e) {
+      leistrap.win.addEvent(evName, function (e) {
             e.preventDefault()
+           if(!elem){
+            move()
+            return;
+           }
+            if(elem && elem._conf === e.target){
+                move()
+           }
+           
+           function move(){
             MENU.target = e.target
             pop.move({
                 x: e.clientX,
@@ -39,7 +48,11 @@ function leisMenu(useIcon, parent) {
                 height: 10,
                 width: 10
             })
+           }
+
         })
+
+        
     }
 
     function addOption(icon, title, subTitle, subMenu_){
@@ -56,7 +69,7 @@ function leisMenu(useIcon, parent) {
         if(subMenu_){
             li.add(subMenu_.pop.pop)
             
-            li.content[2].setText("SubMenu")
+            li.content[2].setText("").setClassName("sb-m")
             li.addEvent("mouseenter", (e)=> showSubMenu(subMenu_, e, li))
             li.addEvent("mouseleave", ()=> hideSubMenu(subMenu_))
             

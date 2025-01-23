@@ -49,3 +49,21 @@
     padding-left: 25px;
 
 }
+
+.sb-m{
+    position: relative;
+    display: inline-block;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    width: 8px;
+    height: 8px;
+    top: 8px;
+    left:0;
+    font-weight: 500;
+    font-size: 16px;
+    border-bottom: 2px solid;
+    border-left: 2px solid;
+    transform: rotateY(180deg) rotateZ(40deg);
+    transition: .16s;
+}

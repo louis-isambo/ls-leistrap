@@ -7,6 +7,9 @@ import { leisMenu } from "./menu.js";
 
 
 leistrap.whenReady(function(){
+
+   
+
     this.add(leistrap.create("p", {text: "Hello world "}))
     let m = leisMenu(null)
     let sm = leisMenu(null, "sb-m")
@@ -30,8 +33,17 @@ leistrap.whenReady(function(){
     
     })
 
+    rangeList(5).forEach(function(item){
+        let btn = leistrap.create("div", {
+            text : "..."+item,
+            parent : "main"
+        })
+        m.listen(btn, "contextmenu")
+    })
+    
+
     sm.addOption(null, "hey", "c",  sm2)
-    m.listen("contextmenu")
+    // m.listen(leistrap.win, "contextmenu")
     m.addOption(null, `menu item`, "copy ", sm)
     sm.addOption(null, `menu item`, "copy ", sm3)
     rangeList(12).forEach(function(item){
