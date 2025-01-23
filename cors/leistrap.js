@@ -74,7 +74,6 @@ const leistrap = (function () {
             // call all useInit Hooks and pass the this as parameter
             hooks.callHook("useInit", DisplayError, this)
 
-
         }
 
 
@@ -324,6 +323,9 @@ const leistrap = (function () {
     const main = new BaseElement(document.createElement("div"))
     main.data.id = "main"
 
+    const win = new BaseElement(document.createElement("div"))
+    win._conf = window
+
     // set the default style
     document.head.append(
         new BaseElement(document.createElement("style")).setText(leistrapCss).render()
@@ -440,6 +442,7 @@ const leistrap = (function () {
     }
 
     leistrap.main = main
+    leistrap.win = win
     leistrap.event = mainEvent
     leistrap.create = create;
     leistrap.whenReady = whenReady;

@@ -103,7 +103,9 @@ export declare namespace leistrap {
 
     function hideWhenWinClick(listener: () => void): void
     const event = _EventEmitter
-    const Colors = [""]
+ 
+    let main = leistrap.create("div")
+    
     const currentElement = leistrap.create("p")
 }
 

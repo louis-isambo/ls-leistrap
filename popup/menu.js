@@ -22,9 +22,13 @@ function leisMenu(useIcon, parent) {
     })
 
 
-    function listen(evName){
-        window.addEventListener(evName, function (e) {
-
+    /**
+     * show the menu
+     * @param {leistrap.Leistrap<HTMLElement>} elem 
+     * @param {keyof WindowEventMap} evName 
+     */
+    function listen(elem, evName){
+      elem.addEvent(evName, function (e) {
             e.preventDefault()
             MENU.target = e.target
             pop.move({
