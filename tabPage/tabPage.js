@@ -1,5 +1,5 @@
 import { leistrap } from "../cors/leistrap.js";
-import { generateId, has, loopObject } from "../../utility/index.js";
+import { generateId, has, loopObject, _EventEmitter } from "../../utility/index.js";
 import tabCSS from "./tab.css"
 import { DisplayError } from "../Errors/leisError.js"
 
@@ -13,6 +13,7 @@ import { DisplayError } from "../Errors/leisError.js"
 
 export function leisTab(option) {
 
+    let event = _EventEmitter()
     // the default tabButton tag
     let TAG_NAME = "button"
 
@@ -93,7 +94,7 @@ export function leisTab(option) {
             const current = tabMap[btnName]
             current.content.show()
             current.content.setClassName("active")
-
+            event.invoke(btnName)
             if (current.btn) {
                 leistrap.get(current.btn, "setClassName", "active")
             }
@@ -129,6 +130,7 @@ export function leisTab(option) {
         loopObject(TAB, (value, key) => delete TAB[key])
         buttonsContainer.destroy()
         contentContainer.destroy()
+        event.clear()
         TAG_NAME = null
     }
 
@@ -139,7 +141,8 @@ export function leisTab(option) {
         invoke,
         useElement,
         destroy,
-        remove
+        remove,
+        event,
     }
 
     return TAB
