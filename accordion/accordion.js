@@ -24,7 +24,8 @@ export function leisAccordion(parent) {
                 type: "button",
                 className: "leis-accordion-btn",
                 parent: body,
-                text: btnText
+                text: btnText,
+                style : ACCORDION.btnStyle
             })
         const content = leistrap.create("div", {
             parent: body,
@@ -45,7 +46,7 @@ export function leisAccordion(parent) {
     }
 
     const ACCORDION = {
-        container, add, header, footer, body, destroy
+        container, add, header, footer, body, destroy, btnStyle: {}
     }
 
     return ACCORDION

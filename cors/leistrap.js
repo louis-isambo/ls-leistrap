@@ -170,15 +170,24 @@ const leistrap = (function () {
         removeAll(listener) {
             setTimeout(() => {
                 let counter = 0
-                let len = this.content.length
-                let allElem = loopObject(this.contentMap)
+               
+                let allElem = loopObject(this.contentMap || {})
+                let len = allElem.length
                 let timer = setInterval(() => {
-                    allElem[counter++].destroy()
-                    if (counter === len){
-                        if(listener) listener()
+                    
+                    if (counter >= len){
                         clearInterval(timer)
+                        if(listener) listener()
+                    } 
+                    else{
+                        if(allElem[counter])
+                            allElem[counter].destroy()
+                            
+                        counter++
                     }
+                    
                 }, 100);
+
             }, 100)
             return this
         }

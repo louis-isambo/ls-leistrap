@@ -1,7 +1,7 @@
 import { string } from "rollup-plugin-string"
 
 export default {
-    input: "./popup/menu.test.js",
+    input: "./list/list.test.js",
     output: {
         file: "./test/bundle.js",
         format: "iife",

@@ -66,7 +66,7 @@ export declare namespace leistrap {
         destroy: () => this
         addElements: (elements: Array<Leistrap>) => this
         remove: (element: Leistrap | string) => this
-        removeAll: () => this
+        removeAll: (listener : () => void) => this
         addEvent: (
 
             eventType: keyof WindowEventMap,

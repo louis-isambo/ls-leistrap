@@ -1,10 +1,12 @@
 import { CloseBtn } from "../button/leisButton.js";
 import { leistrap } from "../cors/leistrap.js";
 import { leisButton } from "../button/leisButton.js";
+import { _EventEmitter, has } from "../../utility/index.js";
 
 leistrap.addCss(leisButton())
 
 function leisModal(titleText) {
+   const event =  _EventEmitter()
     const container = leistrap.create('div', {
         parent: "main",
         className: "leis-modal-container",
@@ -64,6 +66,9 @@ function leisModal(titleText) {
 
     function show() {
         container.setClassName("show")
+        if(has("show", event.eventsList())){
+            event.invoke('show')
+        }
     }
     function hide() {
         container.removeClassName("show")
@@ -76,7 +81,7 @@ function leisModal(titleText) {
     const Modal = {
         container, dialog, content, header,
         body, footer, title, closeBtn, footerCard, setSize,
-        show, 
+        show, hide, event
     }
     return Modal
 }

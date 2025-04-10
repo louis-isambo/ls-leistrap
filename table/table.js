@@ -4,42 +4,44 @@ import tableCss from "./style.css"
 
 leistrap.addCss(tableCss)
 
-function leisTable(parent, col = 3, row = 3) {
+function leisTable(parent, col = 3, row = 3, hd=[]) {
 
     const container = leistrap.create("div", { parent, className: "leis-table-container" })
 
-    const header = leistrap.create("thead", { parent: container, className: "leis-table-head" })
-    const body = leistrap.create("tbody", { parent: container, className: "leis-table-head" })
+    const table = leistrap.create("table", { parent: container, className: "leis-table" })
+    const header = leistrap.create("thead", { parent: table, className: "leis-table-head" })
+    const body = leistrap.create("tbody", { parent: table, className: "leis-table-head" })
 
     // init the table headings  nd columns count
-    rangeList(col).forEach(item => {
-        const th = leistrap.create('th', { parent: header, className: "leis-table-heading", text: "heading" })
+    rangeList(col).forEach((item, i) => {
+        const th = leistrap.create('th', { parent: header, className: "leis-table-heading", text: hd[i] || "heading" })
     })
 
     // init the table rows and data
     const rows = __addRow__(row, col)
 
-    function __addRow__(rowNumber = 1, col) {
+    function __addRow__(rowNumber = 1, col, data=[]) {
         /**
          * @type {Array<leistrap.Leistrap<HTMLTableRowElement>>}
          */
         const matrix = []
-        rangeList(rowNumber).forEach(item => {
+        rangeList(rowNumber).forEach((item, i) => {
             //adding rows
             const tr = leistrap.create('tr', { parent: body, className: "leis-table-row" })
             matrix.push(tr)
             // adding table data for each table row
             // !note that  the number of the table data refers to the number of columns
-            rangeList(col).forEach(item => {
-                leistrap.create('td', { parent: tr, className: "leis-table-data", text: "data" })
+            rangeList(col).forEach((item, j) => {
+                let text = data[i] ? data[i][j] : null
+                leistrap.create('td', { parent: tr, className: "leis-table-data", text: text || "data" })
             })
         })
 
         return matrix
     }
 
-    function addRow(rowNumber) {
-        return __addRow__(rowNumber, header.content.length)
+    function addRow(rowNumber,data ) {
+        return __addRow__(rowNumber, header.content.length, data)
     }
 
     function addColumn(col = 1) {
@@ -96,7 +98,7 @@ function leisTable(parent, col = 3, row = 3) {
     }
     const TABLE = {
         rows, addRow, addColumn, getRow, getRow, getColumn, getCell,
-        body, header
+        body, header, container, table
     }
 
     return TABLE

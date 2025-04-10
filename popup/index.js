@@ -96,7 +96,15 @@ function DropUp(button, side, drag=true, parent) {
     function show(newInstance) {
         if (!pop.state.visible || newInstance) {
             pop.setClassName("show")
-            pop.setStyleSheet({ zIndex: ZIndex++ })
+            if(POP_UP.zIndex){
+                pop.setStyleSheet({ zIndex: POP_UP.zIndex })
+             
+                
+            }
+            else{
+                pop.setStyleSheet({ zIndex: ZIndex++ })
+
+            }
             if (eventMap.show) eventMap.show.forEach(item => item())
             pop.state.visible = true
         }
@@ -128,6 +136,7 @@ function DropUp(button, side, drag=true, parent) {
          * @type {(arg)=> void} 
          */
         action,
+        zIndex: null,
         children : []
     }
 

@@ -26,9 +26,11 @@ function leisMenu(useIcon, parent) {
      * show the menu
      * @param {leistrap.Leistrap<HTMLElement>} elem 
      * @param {keyof WindowEventMap} evName 
+     * @param {leistrap.Leistrap<HTMLElement>} win
      */
-    function listen(elem, evName){
-      leistrap.win.addEvent(evName, function (e) {
+    function listen(elem, evName, win, option){
+        win = win || leistrap.win
+      win.addEvent(evName, function (e) {
             e.preventDefault()
            if(!elem){
             move()
@@ -40,11 +42,23 @@ function leisMenu(useIcon, parent) {
            
            function move(){
             MENU.target = e.target
+            let [x, y] = [e.clientX, e.clientY]
+            if(MENU.page){
+                
+                let rect = MENU.page._conf.getBoundingClientRect()
+                x += rect.x
+                y += rect.y 
+                // console.log(option.x, option.y);
+                
+          
+            }
+           
+            
             pop.move({
-                x: e.clientX,
-                y: e.clientY,
-                left: e.clientX,
-                top: e.clientY,
+                x,
+                y,
+                left: x,
+                top: y,
                 height: 10,
                 width: 10
             })
